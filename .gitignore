@@ -1,0 +1,37 @@
+# .NET / Visual Studio build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / VS Code / Rider cache & user settings
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# WebView2 runtime user data folders
+*.WebView2/
+EBWebView/
+
+# Unity generated folders (if Unity project is opened)
+[Ll]ibrary/
+[Tt]emp/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+*.csproj.user
+
+# OS temporary files
+Thumbs.db
+.DS_Store

@@ -1,0 +1,104 @@
+.root-container {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top-toolbar {
+    height: 48px;
+    background-color: rgba(18, 21, 28, 0.96);
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(46, 54, 70);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.toolbar-group {
+    flex-direction: row;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.toolbar-button {
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 6px;
+    background-color: rgb(35, 40, 52);
+    color: rgb(225, 232, 244);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgb(54, 63, 82);
+    font-size: 12px;
+}
+
+.toolbar-button:hover {
+    background-color: rgb(47, 55, 71);
+}
+
+.toolbar-button-active {
+    background-color: rgb(28, 100, 199);
+    border-color: rgb(84, 156, 248);
+    color: rgb(255, 255, 255);
+}
+
+.top-dropdown-container {
+    flex-direction: row;
+    padding-left: 12px;
+    padding-top: 6px;
+}
+
+.nav-dropdown-panel {
+    width: 340px;
+    background-color: rgba(20, 24, 32, 0.98);
+    border-width: 1px;
+    border-color: rgb(60, 70, 92);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.row-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.middle-area {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.section-header {
+    color: rgb(110, 168, 254);
+    font-size: 12px;
+    -unity-font-style: bold;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.field-label {
+    color: rgb(210, 215, 225);
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.bottom-statusbar {
+    height: 30px;
+    background-color: rgba(14, 16, 21, 0.96);
+    border-top-width: 1px;
+    border-top-color: rgb(42, 49, 64);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.status-text {
+    color: rgb(214, 224, 245);
+    font-size: 12px;
+}

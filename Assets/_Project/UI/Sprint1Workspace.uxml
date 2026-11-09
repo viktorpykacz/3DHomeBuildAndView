@@ -1,0 +1,149 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="Sprint1Workspace.uss" />
+    <ui:VisualElement name="RootContainer" class="root-container" picking-mode="Ignore">
+        <!-- Unified Top Horizontal Navigation Bar -->
+        <ui:VisualElement name="TopToolbar" class="top-toolbar" picking-mode="Position">
+            <!-- 1. Projekt & Edycja -->
+            <ui:VisualElement class="toolbar-group">
+                <ui:Button name="BtnNavProject" text="Projekt ▾" class="toolbar-button" />
+                <ui:Button name="BtnUndo" text="↩ Cofnij" class="toolbar-button" />
+                <ui:Button name="BtnRedo" text="↪ Ponów" class="toolbar-button" />
+                <ui:Button name="BtnToolSelect" text="🖱️ Wybierz" class="toolbar-button" />
+                <ui:Button name="BtnDeleteSelectedWall" text="🗑️ Usuń" class="toolbar-button" />
+            </ui:VisualElement>
+
+            <!-- 2. Skatalogowane Kategorie Narzędzi BIM -->
+            <ui:VisualElement class="toolbar-group">
+                <ui:Button name="BtnNavWalls" text="🧱 Ściany i Rzut ▾" class="toolbar-button toolbar-button-active" />
+                <ui:Button name="BtnNavOpenings" text="🪟 Stolarka ▾" class="toolbar-button" />
+                <ui:Button name="BtnNavFurniture" text="🛋️ Meble i Kuchnia ▾" class="toolbar-button" />
+                <ui:Button name="BtnNavMEP" text="⚡ Instalacje MEP ▾" class="toolbar-button" />
+                <ui:Button name="BtnNavFloors" text="🏢 Piętra i Dach ▾" class="toolbar-button" />
+                <ui:Button name="BtnNavEnvironment" text="☀️ Widok i Światło ▾" class="toolbar-button" />
+            </ui:VisualElement>
+
+            <!-- 3. Szybki Spacer FPP -->
+            <ui:VisualElement class="toolbar-group">
+                <ui:Button name="BtnToggleWalkthrough" text="🚶 Spacer 3D FPP (Tab)" class="toolbar-button toolbar-button-active" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Top Horizontal Dropdowns Container (Attached to Top Bar) -->
+        <ui:VisualElement name="TopDropdownContainer" class="top-dropdown-container" picking-mode="Ignore">
+            <!-- Dropdown 1: Projekt -->
+            <ui:VisualElement name="PanelNavProject" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="PLIK PROJEKTU BIM (.JSON)" class="section-header" />
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnSaveProject" text="💾 Zapisz JSON" class="toolbar-button" />
+                    <ui:Button name="BtnLoadProject" text="📂 Wczytaj JSON" class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:Label text="STATYSTYKI KONDYGNACJI" class="section-header" />
+                <ui:Label name="LblRoomsSummary" text="Pomieszczenia: 0 (0.0 m²)" class="field-label" />
+            </ui:VisualElement>
+
+            <!-- Dropdown 2: Ściany i Rzut 2D -->
+            <ui:VisualElement name="PanelNavWalls" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="RYSOWANIE I PARAMETRY ŚCIANY (BIM)" class="section-header" />
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnToolDrawWall" text="✏️ Rysuj Ściany" class="toolbar-button toolbar-button-active" />
+                    <ui:Button name="BtnPresetLoadBearing" text="Nośna 24 cm" class="toolbar-button" />
+                    <ui:Button name="BtnPresetPartition" text="Działowa 12 cm" class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:FloatField name="FltWallThickness" label="Grubość ściany (m):" value="0.24" />
+                <ui:FloatField name="FltWallHeight" label="Wysokość ściany (m):" value="2.75" />
+                <ui:Label text="PODKŁAD 2D (BLUEPRINT)" class="section-header" />
+                <ui:TextField name="TxtBlueprintPath" label="Ścieżka PNG/JPG:" value="" />
+                <ui:Button name="BtnLoadBlueprint" text="🗺️ Wgraj rzut z dysku" class="toolbar-button" />
+                <ui:FloatField name="FltCalibrationMeters" label="Wymiar rzeczywisty (m):" value="5.0" />
+                <ui:Button name="BtnConfirmCalibration" text="📏 Zatwierdź skalę 2-pkt" class="toolbar-button" />
+            </ui:VisualElement>
+
+            <!-- Dropdown 3: Stolarka (Okna i Drzwi) -->
+            <ui:VisualElement name="PanelNavOpenings" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="OKNA I DRZWI" class="section-header" />
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnToolPlaceWindow" text="🪟 Okno" class="toolbar-button" />
+                    <ui:Button name="BtnToolPlaceDoor" text="🚪 Drzwi" class="toolbar-button" />
+                    <ui:Button name="BtnPresetWindow120" text="Okno 120×150" class="toolbar-button" />
+                    <ui:Button name="BtnPresetDoor90" text="Drzwi 90×205" class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:FloatField name="FltOpeningWidth" label="Szerokość otworu (m):" value="1.20" />
+                <ui:FloatField name="FltOpeningHeight" label="Wysokość otworu (m):" value="1.50" />
+                <ui:FloatField name="FltOpeningSill" label="Wys. parapetu (m):" value="0.85" />
+            </ui:VisualElement>
+
+            <!-- Dropdown 4: Meble i Kuchnia -->
+            <ui:VisualElement name="PanelNavFurniture" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="KATALOG MEBLI, KUCHNI I AGD" class="section-header" />
+                <ui:Button name="BtnToolPlaceFurniture" text="🛋️ Aktywuj Tryb Meblowania" class="toolbar-button" />
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnCatalogCabinetBase60" text="Szafka Dolna 60" class="toolbar-button" />
+                    <ui:Button name="BtnCatalogSink80" text="Zlew 80 cm" class="toolbar-button" />
+                    <ui:Button name="BtnCatalogDishwasher60" text="Zmywarka 60" class="toolbar-button" />
+                    <ui:Button name="BtnCatalogCabinetWall60" text="Wisząca 60" class="toolbar-button" />
+                    <ui:Button name="BtnCatalogFridge60" text="Lodówka 60" class="toolbar-button" />
+                    <ui:Button name="BtnCatalogSofa220" text="Sofa 220 cm" class="toolbar-button" />
+                    <ui:Button name="BtnCatalogTable160" text="Stół 160×90" class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:TextField name="TxtCustomGltfPath" label="Plik .glb/.gltf:" value="" />
+                <ui:Button name="BtnImportCustomGltf" text="📦 Importuj model 3D (.glb/.gltf)" class="toolbar-button" />
+            </ui:VisualElement>
+
+            <!-- Dropdown 5: Instalacje MEP -->
+            <ui:VisualElement name="PanelNavMEP" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="INSTALACJE MEP (ELEKTRYKA / WOD-KAN)" class="section-header" />
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnToolPlaceMEP" text="⚡ Osadzaj MEP" class="toolbar-button" />
+                    <ui:Button name="BtnToolLinkMEP" text="🔗 Połącz Włącznik->Lampa" class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnMEPSocket230" text="Gniazdko 230V (30cm)" class="toolbar-button" />
+                    <ui:Button name="BtnMEPSocketCountertop" text="Gniazdko Blat (110cm)" class="toolbar-button" />
+                    <ui:Button name="BtnMEPSocket400" text="Siła 400V" class="toolbar-button" />
+                    <ui:Button name="BtnMEPSwitchSingle" text="Włącznik (110cm)" class="toolbar-button" />
+                    <ui:Button name="BtnMEPCeilingLight" text="Lampa Sufitowa" class="toolbar-button" />
+                    <ui:Button name="BtnMEPWaterCold" text="Woda Zimna (55cm)" class="toolbar-button" />
+                    <ui:Button name="BtnMEPWaterHot" text="Woda Ciepła (55cm)" class="toolbar-button" />
+                    <ui:Button name="BtnMEPSewage50" text="Odpływ 50mm" class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:FloatField name="FltMEPElevation" label="Wys. montażu MEP (m):" value="0.30" />
+                <ui:Button name="BtnEnterWallElevation" text="📐 Widok 2D Rozwinięcia Ściany (V)" class="toolbar-button" />
+            </ui:VisualElement>
+
+            <!-- Dropdown 6: Piętra i Dach -->
+            <ui:VisualElement name="PanelNavFloors" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="KONDYGNACJE I DACH DWUSPADOWY" class="section-header" />
+                <ui:VisualElement class="row-group">
+                    <ui:Button name="BtnFloorGround" text="Parter (0.0m)" class="toolbar-button toolbar-button-active" />
+                    <ui:Button name="BtnFloorAttic" text="Poddasze (+3.0m)" class="toolbar-button" />
+                    <ui:Button name="BtnToggleRoofMesh" text="Dach 3D: Wł." class="toolbar-button" />
+                </ui:VisualElement>
+                <ui:FloatField name="FltKneeWallHeight" label="Ścianka kolankowa (m):" value="1.10" />
+                <ui:FloatField name="FltRoofPitch" label="Kąt połaci dachu (°):" value="38.0" />
+                <ui:Button name="BtnApplyGableRoof" text="🏠 Zastosuj Dach i Ścinanie Ścian" class="toolbar-button" />
+            </ui:VisualElement>
+
+            <!-- Dropdown 7: Widok i Światło -->
+            <ui:VisualElement name="PanelNavEnvironment" class="nav-dropdown-panel" style="display: none;" picking-mode="Position">
+                <ui:Label text="WIDOK KAMERY I OŚWIETLENIE HDRP" class="section-header" />
+                <ui:Button name="BtnToggle2D3D" text="Widok: 3D Orbit" class="toolbar-button" />
+                <ui:Slider name="SldTimeOfDay" label="Pora dnia (0-24h):" low-value="0.0" high-value="24.0" value="14.5" />
+                <ui:Button name="BtnStartWalkthroughSide" text="🚶 Wirtualny Spacer FPP (Tab)" class="toolbar-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Center Screen Walkthrough Crosshair & Interaction Prompt -->
+        <ui:VisualElement name="MiddleArea" class="middle-area" picking-mode="Ignore">
+            <ui:VisualElement name="WalkthroughHudOverlay" style="flex-grow: 1; align-items: center; justify-content: center;" picking-mode="Ignore">
+                <ui:Label name="LblWalkthroughCrosshair" text="+" style="color: white; font-size: 22px; display: none;" picking-mode="Ignore" />
+                <ui:Label name="LblWalkthroughPrompt" text="" style="color: rgb(255, 230, 110); font-size: 15px; -unity-font-style: bold; margin-top: 12px;" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Bottom Telemetry & Status Bar -->
+        <ui:VisualElement name="BottomStatusBar" class="bottom-statusbar" picking-mode="Position">
+            <ui:Label name="LblLiveTelemetry" text="Gotowy | Narzędzie: Rysowanie Ścian" class="status-text" />
+            <ui:Label name="LblHistoryStatus" text="Historia: 0 operacji" class="status-text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
