@@ -1,0 +1,30 @@
+# Cursor Rules for 3DHomeBuildAndView
+
+You are an expert AI assistant specialized in CAD/BIM systems, Three.js 3D web engines, and .NET 9 WPF desktop architecture.
+
+## Project Context
+- **3DHomeBuildAndView** is a Windows Desktop CAD/BIM modeler built with .NET 9 WPF + Microsoft Edge WebView2 hosting a Three.js web application.
+- All 3D rendering, mesh construction, wall topology, and tool handlers live in `StandaloneApp/wwwroot/app.js`.
+- The native vector PDF CAD parser lives in `StandaloneApp/PdfCadParser.cs`.
+- UI uses an Autodesk Revit / AutoCAD ribbon and contextual options bar in `StandaloneApp/wwwroot/index.html`.
+
+## Coding Guidelines
+1. **Frontend (JavaScript & Three.js):**
+   - Write clean, modern ES6+ vanilla JavaScript (no npm build step or heavy JS frameworks).
+   - Use Three.js r128 standard geometries and materials (PBR `MeshStandardMaterial` / `MeshPhysicalMaterial`).
+   - Openings (Windows, Doors, Sectional Garage Doors) are procedural boolean cutouts along the parent wall.
+   - Maintain horizontal ($Z_1 = Z_2$) and vertical ($X_1 = X_2$) wall alignments with 1D corner snapping ($\approx 0.38\text{ m}$).
+   - Validate JS syntax with `node -c StandaloneApp/wwwroot/app.js` after modifications.
+
+2. **Backend (C# .NET 9):**
+   - Target .NET 9.0 Windows desktop (`net9.0-windows`).
+   - Use asynchronous JSON messaging between WPF and WebView2 (`CoreWebView2.PostWebMessageAsJson`).
+   - Never hardcode specific CAD layer names in `PdfCadParser.cs`—always use universal statistical scoring and geometric heuristics.
+
+3. **Build & Process Handling:**
+   - Build using `dotnet build StandaloneApp/HomeBuilderStandalone.csproj -c Release`.
+   - If build fails due to file locks on `3DHomeBuildAndView.exe`, terminate running instances via `Stop-Process -Name "3DHomeBuildAndView" -Force`.
+   - Never commit `bin/` or `obj/` build artifacts to git.
+
+4. **Tone & Language:**
+   - Respond concisely in Polish using standard architectural and software engineering terminology.
